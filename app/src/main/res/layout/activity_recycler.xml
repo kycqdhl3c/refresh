@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.kycq.refresh.recycler.RecyclerActivity">
+	
+	<data>
+		
+		<import type="android.view.View"/>
+		
+		<import type="android.view.View.OnClickListener"/>
+		
+		<variable
+			name="refreshReadyClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="refreshingClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="completeSuccessClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="completeFailureClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="completeErrorClickListener"
+			type="OnClickListener"/>
+	</data>
+	
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		
+		<com.kycq.library.refresh.RefreshLayout
+			android:id="@+id/refreshLayout"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1.0"
+			app:refresh_statusMode="hide"
+			app:refresh_viewHeader="@layout/refresh_basic_header"
+			app:refresh_viewStatus="@layout/refresh_basic_status">
+			
+			<android.support.v7.widget.RecyclerView
+				android:id="@+id/recyclerView"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"/>
+		</com.kycq.library.refresh.RefreshLayout>
+		
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="0.5dp"
+			android:background="#EFEFEF"/>
+		
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@android:color/white">
+			
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:background="?selectableItemBackground"
+				android:gravity="center"
+				android:onClick="@{refreshReadyClickListener}"
+				android:paddingBottom="14dp"
+				android:paddingTop="14dp"
+				android:text="@string/refresh_ready"/>
+			
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:background="?selectableItemBackground"
+				android:gravity="center"
+				android:onClick="@{refreshingClickListener}"
+				android:paddingBottom="14dp"
+				android:paddingTop="14dp"
+				android:text="@string/refreshing"/>
+			
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:background="?selectableItemBackground"
+				android:gravity="center"
+				android:onClick="@{completeSuccessClickListener}"
+				android:paddingBottom="14dp"
+				android:paddingTop="14dp"
+				android:text="@string/complete_success"/>
+			
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:background="?selectableItemBackground"
+				android:gravity="center"
+				android:onClick="@{completeFailureClickListener}"
+				android:paddingBottom="14dp"
+				android:paddingTop="14dp"
+				android:text="@string/complete_failure"/>
+			
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1.0"
+				android:background="?selectableItemBackground"
+				android:gravity="center"
+				android:onClick="@{completeErrorClickListener}"
+				android:paddingBottom="14dp"
+				android:paddingTop="14dp"
+				android:text="@string/complete_error"/>
+		</LinearLayout>
+	</LinearLayout>
+</layout>

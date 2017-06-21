@@ -1,0 +1,26 @@
+<resources>
+	<string name="app_name">KycqRefresh</string>
+	<string name="load_ready">准备加载</string>
+	<string name="loading">加载中</string>
+	<string name="load_complete">加载完成</string>
+	<string name="load_failure">加载失败</string>
+	<string name="network_error">网络错误，请重试</string>
+	<string name="refresh_ready">准备刷新</string>
+	<string name="refreshing">刷新中</string>
+	<string name="complete_success">请求成功</string>
+	<string name="complete_failure">请求失败</string>
+	<string name="complete_error">请求错误</string>
+	<string name="data_empty">暂无数据~</string>
+	<string name="setting">设置</string>
+	<string name="refresh_mode">刷新模式</string>
+	<string name="load_mode">加载模式</string>
+	<string name="auto">auto</string>
+	<string name="show">show</string>
+	<string name="hide">hide</string>
+	<string name="please_enter_the_number_of_data">请输入数据数量</string>
+	<string name="please_enter_the_number_of_page">请输入页面数量</string>
+	<string name="the_default_number_of_data">10</string>
+	<string name="the_default_number_of_page">2</string>
+	<string name="whether_to_load_more">是否加载更多</string>
+	<string name="confirm">确定</string>
+</resources>

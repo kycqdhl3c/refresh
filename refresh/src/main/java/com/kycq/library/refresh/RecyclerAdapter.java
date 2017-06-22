@@ -911,7 +911,7 @@ public abstract class RecyclerAdapter<StatusInfo> {
 	/**
 	 * 兼容列表适配器
 	 */
-	private static class WrapRecyclerAdapter extends RecyclerView.Adapter<WrapHolder> {
+	public static class WrapRecyclerAdapter extends RecyclerView.Adapter<WrapHolder> {
 		/** 刷新类别 */
 		static final int TYPE_REFRESH = Integer.MAX_VALUE;
 		/** 加载类别 */

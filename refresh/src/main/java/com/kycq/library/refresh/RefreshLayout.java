@@ -612,8 +612,7 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 		}
 		
 		int refreshPosition = mRefreshHeader.getRefreshOffsetPosition();
-		if (mStatus != STATUS_REFRESHING
-				&& mCurrentPosition >= refreshPosition) {
+		if (mStatus != STATUS_REFRESHING && mCurrentPosition >= refreshPosition) {
 			notifyRefresh();
 		}
 		if (!mIsUnderTouch) {
@@ -729,9 +728,6 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 			}
 		}
 		
-		if (mStatus == STATUS_REFRESH_READY) {
-			return;
-		}
 		notifyRefreshReady();
 	}
 	

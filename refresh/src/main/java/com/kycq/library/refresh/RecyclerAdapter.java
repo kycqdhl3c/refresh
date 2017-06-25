@@ -325,9 +325,6 @@ public abstract class RecyclerAdapter<StatusInfo> {
 	 * @param statusInfo 状态信息
 	 */
 	protected void notifyRefreshComplete(StatusInfo statusInfo) {
-		int itemCount = getItemCount();
-		int oldWrapItemCount = mWrapRecyclerAdapter.getItemCount();
-		
 		mStatusInfo = statusInfo;
 		mStatus = REFRESH_COMPLETE;
 		if (mOnTaskListener != null && mTask != null) {
@@ -337,18 +334,7 @@ public abstract class RecyclerAdapter<StatusInfo> {
 		mRefreshHolder.onRefreshComplete(statusInfo);
 		mLoadHolder.onLoadComplete(statusInfo);
 		
-		int newWrapItemCount = mWrapRecyclerAdapter.getItemCount();
-		if (itemCount == 0) {
-			if (newWrapItemCount == 1) {
-				notifyItemChanged(0);
-			} else if (newWrapItemCount == 0) {
-				notifyItemInserted(0);
-			}
-		} else {
-			if (oldWrapItemCount + 1 == newWrapItemCount) {
-				notifyItemInserted(oldWrapItemCount);
-			}
-		}
+		notifyDataSetChanged();
 	}
 	
 	/**

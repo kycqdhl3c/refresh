@@ -75,12 +75,7 @@ public abstract class BasicAdapter<AdapterInfo> extends RecyclerAdapter<StatusIn
 			}
 		}
 		boolean isRefreshing = this.currentPage == initPage;
-		if (statusInfo == null) {
-			if (isRefreshing) {
-				resetAdapterInfo(null);
-			}
-			swipeComplete(null);
-		} else if (statusInfo.isSuccessful()) {
+		if (statusInfo != null && statusInfo.isSuccessful()) {
 			if (isRefreshing) {
 				resetAdapterInfo(adapterInfo);
 			} else {
@@ -94,6 +89,9 @@ public abstract class BasicAdapter<AdapterInfo> extends RecyclerAdapter<StatusIn
 				swipeLoadReady();
 			}
 		} else {
+			if (isRefreshing) {
+				resetAdapterInfo(null);
+			}
 			swipeComplete(statusInfo);
 		}
 	}

@@ -12,6 +12,7 @@ import com.kycq.refresh.bean.BasicBean;
 import com.kycq.refresh.bean.StatusInfo;
 import com.kycq.refresh.databinding.ItemBasicLoadingListBinding;
 import com.kycq.refresh.databinding.ItemBasicRefreshListBinding;
+import com.kycq.refresh.databinding.ItemWrapRefreshListBinding;
 
 public abstract class BasicAdapter<AdapterInfo> extends RecyclerAdapter<StatusInfo> {
 	/** 初始页码 */
@@ -117,7 +118,7 @@ public abstract class BasicAdapter<AdapterInfo> extends RecyclerAdapter<StatusIn
 	 *
 	 * @param adapterInfo 数据信息
 	 */
-	private void resetAdapterInfo(AdapterInfo adapterInfo) {
+	protected void resetAdapterInfo(AdapterInfo adapterInfo) {
 		this.adapterInfo = adapterInfo;
 		notifyDataSetChanged();
 	}
@@ -161,16 +162,19 @@ public abstract class BasicAdapter<AdapterInfo> extends RecyclerAdapter<StatusIn
 			
 			@Override
 			protected void onRefreshReady() {
+				this.dataBinding.ivStatus.setVisibility(View.GONE);
 				this.dataBinding.tvStatus.setText(R.string.refresh_ready);
 			}
 			
 			@Override
 			protected void onRefresh() {
+				this.dataBinding.ivStatus.setVisibility(View.VISIBLE);
 				this.dataBinding.tvStatus.setText(R.string.refreshing);
 			}
 			
 			@Override
 			protected void onRefreshComplete(StatusInfo statusInfo) {
+				this.dataBinding.ivStatus.setVisibility(View.GONE);
 				if (statusInfo == null) {
 					this.dataBinding.tvStatus.setText(R.string.network_error);
 				} else if (!statusInfo.isSuccessful()) {
@@ -221,5 +225,52 @@ public abstract class BasicAdapter<AdapterInfo> extends RecyclerAdapter<StatusIn
 				}
 			}
 		};
+	}
+	
+	public static class WrapRefreshHolder extends RefreshHolder<StatusInfo> {
+		private ItemWrapRefreshListBinding dataBinding;
+		
+		@Override
+		protected View onCreateView(ViewGroup parent) {
+			this.dataBinding = DataBindingUtil.inflate(
+					LayoutInflater.from(parent.getContext()),
+					R.layout.item_wrap_refresh_list,
+					parent, false
+			);
+			return this.dataBinding.getRoot();
+		}
+		
+		public void notifyRefreshReady() {
+			onRefreshReady();
+		}
+		
+		@Override
+		protected void onRefreshReady() {
+			this.dataBinding.tvStatus.setText(R.string.refresh_ready);
+		}
+		
+		public void notifyRefresh() {
+			onRefresh();
+		}
+		
+		@Override
+		protected void onRefresh() {
+			this.dataBinding.tvStatus.setText(R.string.refreshing);
+		}
+		
+		public void notifyRefreshComplete(StatusInfo statusInfo) {
+			onRefreshComplete(statusInfo);
+		}
+		
+		@Override
+		protected void onRefreshComplete(StatusInfo statusInfo) {
+			if (statusInfo == null) {
+				this.dataBinding.tvStatus.setText(R.string.network_error);
+			} else if (!statusInfo.isSuccessful()) {
+				this.dataBinding.tvStatus.setText(R.string.complete_failure);
+			} else {
+				this.dataBinding.tvStatus.setText(R.string.data_empty);
+			}
+		}
 	}
 }

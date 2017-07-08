@@ -1,4 +1,4 @@
-package com.kycq.refresh.recycler;
+package com.kycq.refresh.recycler.tab;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;

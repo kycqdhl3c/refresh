@@ -19,7 +19,19 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".recycler.RecyclerActivity"
+			android:name=".recycler.normal.NormalRecyclerActivity"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name=".recycler.content.ContentRecyclerActivity"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name=".recycler.tab.TabRecyclerActivity"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name=".nested.NestedScrollActivity"
+			android:screenOrientation="portrait"/>
+		<activity
+			android:name=".nested.tab.TabNestedActivity"
 			android:screenOrientation="portrait"/>
 	</application>
 

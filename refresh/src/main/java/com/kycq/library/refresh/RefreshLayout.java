@@ -356,6 +356,8 @@ public class RefreshLayout extends ViewGroup implements NestedScrollingParent, N
 		if (mRefreshStatus != null) {
 			// noinspection unchecked
 			toggleStatus(mRefreshStatus.onRefreshComplete(statusInfo));
+		} else {
+			toggleStatus(false);
 		}
 	}
 	

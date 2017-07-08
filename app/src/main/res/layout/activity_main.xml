@@ -8,20 +8,53 @@
 		<import type="android.view.View.OnClickListener"/>
 		
 		<variable
-			name="recyclerClickListener"
+			name="normalRecyclerClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="tabRecyclerClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="contentRecyclerClickListener"
+			type="OnClickListener"/>
+		
+		<variable
+			name="tabNestedClickListener"
 			type="OnClickListener"/>
 	</data>
 	
 	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="match_parent">
+		android:layout_height="match_parent"
+		android:orientation="vertical">
 		
 		<Button
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:onClick="@{recyclerClickListener}"
-			android:text="RecyclerView"
+			android:onClick="@{normalRecyclerClickListener}"
+			android:text="RecyclerView - Normal"
 			android:textAllCaps="false"/>
-	
+		
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="@{tabRecyclerClickListener}"
+			android:text="RecyclerView - Tab"
+			android:textAllCaps="false"/>
+		
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="@{contentRecyclerClickListener}"
+			android:text="RecyclerView - Content"
+			android:textAllCaps="false"/>
+		
+		<Button
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:onClick="@{tabNestedClickListener}"
+			android:text="NestedScrollView - Tab"
+			android:textAllCaps="false"/>
 	</LinearLayout>
 </layout>

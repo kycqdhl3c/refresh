@@ -1,4 +1,4 @@
-package com.kycq.refresh.recycler;
+package com.kycq.refresh.recycler.normal;
 
 import android.app.Dialog;
 import android.content.Context;

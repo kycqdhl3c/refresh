@@ -151,6 +151,7 @@ public abstract class RecyclerAdapter<StatusInfo> {
 	public <Task> void setOnTaskListener(OnTaskListener<Task> listener) {
 		if (mOnTaskListener != null && mTask != null) {
 			mOnTaskListener.onCancel(mTask);
+			mTask = null;
 		}
 		// noinspection unchecked
 		mOnTaskListener = (OnTaskListener<Object>) listener;
@@ -191,6 +192,7 @@ public abstract class RecyclerAdapter<StatusInfo> {
 		mStatus = REFRESH_READY;
 		if (mOnTaskListener != null && mTask != null) {
 			mOnTaskListener.onCancel(mTask);
+			mTask = null;
 		}
 		
 		mRefreshHolder.onRefreshReady();
@@ -257,6 +259,7 @@ public abstract class RecyclerAdapter<StatusInfo> {
 		mStatus = LOAD_READY;
 		if (mOnTaskListener != null && mTask != null) {
 			mOnTaskListener.onCancel(mTask);
+			mTask = null;
 		}
 		
 		mLoadHolder.onLoadReady();
@@ -332,6 +335,7 @@ public abstract class RecyclerAdapter<StatusInfo> {
 		mStatus = REFRESH_COMPLETE;
 		if (mOnTaskListener != null && mTask != null) {
 			mOnTaskListener.onCancel(mTask);
+			mTask = null;
 		}
 		
 		mRefreshHolder.onRefreshComplete(statusInfo);
@@ -363,6 +367,7 @@ public abstract class RecyclerAdapter<StatusInfo> {
 		mStatus = LOAD_COMPLETE;
 		if (mOnTaskListener != null && mTask != null) {
 			mOnTaskListener.onCancel(mTask);
+			mTask = null;
 		}
 		
 		mLoadHolder.onLoadComplete(statusInfo);

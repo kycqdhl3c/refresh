@@ -1,4 +1,4 @@
-package com.kycq.refresh.recycler;
+package com.kycq.refresh.recycler.normal;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.kycq.library.refresh.OnTaskListener;
 import com.kycq.refresh.R;
 import com.kycq.refresh.bean.ColorListBean;
 import com.kycq.refresh.bean.StatusInfo;
-import com.kycq.refresh.databinding.ActivityRecyclerBinding;
+import com.kycq.refresh.databinding.ActivityNormalRecyclerBinding;
 
-public class RecyclerActivity extends AppCompatActivity {
-	private ActivityRecyclerBinding dataBinding;
+public class NormalRecyclerActivity extends AppCompatActivity {
+	private ActivityNormalRecyclerBinding dataBinding;
 	
 	private RecyclerSettingDialog recyclerSettingDialog;
 	
@@ -29,7 +29,7 @@ public class RecyclerActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_recycler);
+		this.dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_normal_recycler);
 		
 		this.listCount = Integer.parseInt(getString(R.string.the_default_number_of_data));
 		this.pageCount = Integer.parseInt(getString(R.string.the_default_number_of_page));
@@ -56,8 +56,8 @@ public class RecyclerActivity extends AppCompatActivity {
 						@Override
 						public void onSetting(int loadMode, int listCount, int pageCount) {
 							recyclerListAdapter.setLoadMode(loadMode);
-							RecyclerActivity.this.listCount = listCount;
-							RecyclerActivity.this.pageCount = pageCount;
+							NormalRecyclerActivity.this.listCount = listCount;
+							NormalRecyclerActivity.this.pageCount = pageCount;
 						}
 					});
 		}
